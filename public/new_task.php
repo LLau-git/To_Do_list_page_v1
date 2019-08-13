@@ -1,8 +1,13 @@
 <?php
-    // $conn = mysqli_connect("localhost", "root", "", "todo");
     require_once("../private/config.php");
     $db = mysqli_connect(SERVER, USER, PW, DB);
-     
+
+    if (!$db) {
+        echo "Error: Unable to connect to MySQL." . PHP_EOL;
+        echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
+        echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
+        exit;
+    }
     
     if (isset($_POST['submit'])) {
         $task = $_POST['task'];
@@ -12,5 +17,6 @@
 
     $task = mysqli_query($db, "SELECT * FROM tasks");
 
-    mysqli_close($conn);
+    mysqli_close($db);
+
     ?>

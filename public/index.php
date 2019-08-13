@@ -12,34 +12,21 @@
 </head>
 <body>
     <div class="heading">
-        <h2>ToDo list</h2>
-        <div id="Date">Date?</div>
+        <h1>ToDo list</h1>
+        <div id="Date">
+        </div>
     </div>
-    <form method="POST" action="db.php">
+    <form method="POST" action="new_task.php">
         <input type="text" name="task" class="task_input">
         <button type="submit" class="add_btn" name="submit">Add To Do</button>
     </form>
-    <table>
-        <thead>
-            <tr>
-                <th>N</th>
-                <th>Task</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php while ($row = mysqli_fetch_array($tasks)) { ?>
-                <tr>
-                    <td><?php echo $row['id']; ?></td>
-                    <td class="task"><?php echo $row['task']; ?></td>
-                    <td class="delete">
-                        <a href="#">X</a>
-                    </td>
-                </tr>
-            <?php } ?>
-            
-        </tbody>
-    </table>    
+    <ul id="to_do_list">
+    <?php
+    require_once("list_gen.php");
+    getUpdate();
+    ?>
+    </ul> 
+    
 
 </body>
 </html>
