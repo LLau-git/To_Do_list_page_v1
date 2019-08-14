@@ -20,14 +20,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     //TODo same for email
     $email = $_POST["email"];
 
-    $pwhash = "BadHash";
-    if ($_POST["password"] == $_POST["password2"] ) {
+    // $pwhash = "BadHash";
+    // if ($_POST["password"] == $_POST["password2"] )
+    if (isset($_POST['password'])) {
         //ja match tad db ģenerejam passowrd hash vertību
         $pwhash = password_hash($_POST["password"], PASSWORD_DEFAULT);
         $_SESSION['pwhash'] = $pwhash;
-    } else {
-        header("Location: register.php");
-    }
+    // } else {
+    //     header("Location: register.php");
+    };
     
     $stmt = $db->prepare("INSERT INTO users (username, lastname, email, pwhash) VALUES (?, ?, ?, ?)");
     $stmt->bind_param("ssss", $username, $lastname, $email, $pwhash);
