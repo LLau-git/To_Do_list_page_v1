@@ -28,7 +28,6 @@ function getUpdate() {
         echo "<form id='delete_task' method='POST' action='delete_task.php'>";
         echo "<input type='hidden' name='task_id' value='$row[id]'>";
         echo "<button class='delete_button' type='submit'>";
-        echo "<span><i class='fas fa-trash-alt'></i></span>";
         echo "delete</button>";
         echo "</form>";
 

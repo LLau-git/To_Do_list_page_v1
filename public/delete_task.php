@@ -7,6 +7,6 @@ $statement = $db->prepare("DELETE FROM tasks WHERE id = ?");
 $statement->bind_param("s", $_POST['task_id']);
 $statement->execute();
 $db->close();
-header('location:index.php');
+header('location:todos.php');
 
 ?>

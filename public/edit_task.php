@@ -11,6 +11,6 @@ $statement = $db->prepare("UPDATE tasks SET task = ? WHERE id = ?");
 $statement->bind_param("ss", $task_val, $row_id);
 $statement->execute();
 $db->close();
-header('location:index.php');
+header('location:todos.php');
 
 ?>
