@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once("../private/config.php");
-
+// header("Location: lalala.php");
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $db = mysqli_connect(SERVER, USER, PW, DB);
     if (!$db) {
@@ -10,7 +10,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
         exit;
     }
-
+    // header("Location: lalala.php");
     //TODO field validation from https://www.php.net/book.filter
     $username = $_POST["username"];
 
@@ -20,15 +20,22 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     //TODo same for email
     $email = $_POST["email"];
 
-    // $pwhash = "BadHash";
-    // if ($_POST["password"] == $_POST["password2"] )
-    if (isset($_POST['password'])) {
-        //ja match tad db ģenerejam passowrd hash vertību
-        $pwhash = password_hash($_POST["password"], PASSWORD_DEFAULT);
-        $_SESSION['pwhash'] = $pwhash;
-    // } else {
-    //     header("Location: register.php");
-    };
+ 
+    // if (isset($_POST['password'])) {
+        if ($_POST["password"] === $_POST["password2"] ) {
+            //ja match tad db ģenerejam passowrd hash vertību
+            $pwhash = password_hash($_POST["password"], PASSWORD_DEFAULT);
+            $_SESSION['pwhash'] = $pwhash;
+        } else {
+            header("Location: register.php");
+            exit();
+
+    }; 
+    // else {
+    //     header("Location: tododo.php");
+    // }; 
+    // header("Location: lalala.php");
+
     
     $stmt = $db->prepare("INSERT INTO users (username, lastname, email, pwhash) VALUES (?, ?, ?, ?)");
     $stmt->bind_param("ssss", $username, $lastname, $email, $pwhash);
