@@ -10,10 +10,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit;
     }
 
-    if (!isset($_POST["username"])) header("Location: index.php");
+    if (!isset($_POST["username"])) header("Location: index.html");
     $username = $_POST["username"];
-
-    $password = $_POST["pwhash"];
+    $password = $_POST["password"]; 
 
     $stmt = $db->prepare("SELECT id, username, pwhash FROM users WHERE username = ?");
     $stmt->bind_param("s", $username);
@@ -21,28 +20,22 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->execute();
     $res=$stmt->get_result();
     $db->close();
-
-    if($res->num_rows < 1) {
-        echo "Bad Bad result";
-    }
     //izņemam pirmo rindu
     $row=$res->fetch_assoc();
 
-    var_dump($row);
-    if (password_verify ($password , $row['pwhash'])){
-        echo "You are logged in!";
-        $_SESSION['id'] = $row['id'];
+    if($res->num_rows < 1 && (!password_verify ($password , $row['pwhash']))) {
+        header ("Location: index.html");
+    } else {
         $_SESSION['username'] = $username;
+        $_SESSION['pwhash'] = $row['pwhash'];
+        header ("Location: todos.php");
     }
-    
-    echo $username." is logged in! <hr>";
     // exit();
     // header("Location: todos.php");
     //parbaudīju vai dati tiek saņemti no db
     // echo $row['id'];
     // echo $row['username'];
     // echo $row['pwhash'];
-
-}
+};
 
 ?>

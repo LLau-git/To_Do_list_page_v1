@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once("../private/config.php");
 $db = mysqli_connect(SERVER, USER, PW, DB);
 

@@ -2,6 +2,7 @@
 <!-- update list from DB -->
 
 <?php
+session_start();
 function getUpdate() {
     require_once("../private/config.php");
     $db = mysqli_connect(SERVER, USER, PW, DB);
@@ -10,6 +11,7 @@ function getUpdate() {
     $mydata = $result->fetch_all(MYSQLI_ASSOC);
 
     foreach($mydata as $key => $row) {
+        $_SESSION['uid'] = $row['id'];
         // create list
         echo "<li class='todo_list_item'>"; 
         // šī ir 3 rinda, lai uzstartētu listu no nulles

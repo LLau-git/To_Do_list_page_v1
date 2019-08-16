@@ -32,6 +32,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
             exit();
     }; 
     
+    // var_dump($row);
+    // if (password_verify ($password , $row['pwhash'])){
+    //     echo "You are logged in!"; //sessija vaļā
+    //     $_SESSION['id'] = $row['id'];
+    //     $_SESSION['username'] = $username;
+    // }
+    
+    // echo $username." is logged in! <hr>";
+
     $stmt = $db->prepare("INSERT INTO users (username, lastname, email, pwhash) VALUES (?, ?, ?, ?)");
     $stmt->bind_param("ssss", $username, $lastname, $email, $pwhash);
     // set parameters and execute
