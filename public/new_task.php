@@ -27,8 +27,3 @@
     }
 
     ?>
-
-echo "<form id='edit_task' method='POST' action='edit_task.php'>";
-        echo "<input type='hidden' name='task_id' value='$row[id]'>";
-        echo "<input class='edit_task' type='text' name='edit_task' value='$row[task]'>";
-        echo "</form>";

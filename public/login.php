@@ -30,12 +30,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['pwhash'] = $row['pwhash'];
         header ("Location: todos.php");
     }
-    // exit();
-    // header("Location: todos.php");
-    //parbaudīju vai dati tiek saņemti no db
-    // echo $row['id'];
-    // echo $row['username'];
-    // echo $row['pwhash'];
+    
 };
 
 ?>
