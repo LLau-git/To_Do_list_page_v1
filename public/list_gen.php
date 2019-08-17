@@ -2,12 +2,12 @@
 <!-- update list from DB -->
 
 <?php
-session_start();
+// session_start();
 function getUpdate() {
     require_once("../private/config.php");
     $db = mysqli_connect(SERVER, USER, PW, DB);
     $sql = "SELECT * FROM tasks";
-    // $sql = "SELECT * FROM todo_list WHERE userID = '$_SESSION[userID]'  ORDER BY task ASC";
+    // $sql = "SELECT * FROM tasks WHERE uid = '$_SESSION[uid]';
 
     $result = $db->query($sql);
     $mydata = $result->fetch_all(MYSQLI_ASSOC);

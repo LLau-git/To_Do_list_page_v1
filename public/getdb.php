@@ -5,9 +5,9 @@ function getDB() {
     require_once("../private/config.php");
     $db = mysqli_connect(SERVER, USER, PW, DB);
     if (!$db) {
-    echo $dbStatusNok;
+    echo "smthn wrong";
 } else {
-    echo $dbStatusOk;
+    echo "all good";
     echo "<div>Hello, " . $_SESSION['username'] . "!</div>";
 $sql = "SELECT id FROM users WHERE username = '$_SESSION[username]' AND pwhash = '$_SESSION[pwhash]'";
 $res = $db->query($sql);
