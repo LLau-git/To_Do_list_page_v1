@@ -7,11 +7,12 @@ function getUpdate() {
     require_once("../private/config.php");
     $db = mysqli_connect(SERVER, USER, PW, DB);
     $sql = "SELECT * FROM tasks";
+    // $sql = "SELECT * FROM todo_list WHERE userID = '$_SESSION[userID]'  ORDER BY task ASC";
+
     $result = $db->query($sql);
     $mydata = $result->fetch_all(MYSQLI_ASSOC);
 
     foreach($mydata as $key => $row) {
-        $_SESSION['uid'] = $row['id'];
         // create list
         echo "<li class='todo_list_item'>"; 
         // šī ir 3 rinda, lai uzstartētu listu no nulles

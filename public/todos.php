@@ -11,6 +11,13 @@
     <title>ToDos</title>
 </head>
 <body>
+    <div class="db">
+    <?php                  
+        require_once("getdb.php");
+        getDB();
+    ?>
+    </div>
+    
     <div class="heading">
         <h1>ToDo list</h1>
         <div id="Date">
