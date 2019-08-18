@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
-    <link rel="stylesheet" href="../styles/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="../styles/style.css">
-    <script src="../scripts/main.js" defer></script>
     <title>ToDos</title>
 </head>
 <body>
+    <!-- style in html, just this one time -->
+    <form method="POST" action="signout.php" style="border: none; background: none;">
+    <button type="submit" class="logout_btn">Logout</button>
+    </form>
+
     <div class="db">
     <?php                  
         require_once("getdb.php");
