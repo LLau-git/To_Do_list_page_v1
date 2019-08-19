@@ -46,8 +46,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     // set parameters and execute
     $stmt->execute();
     $db->close();
-    echo "Creating new user";
-    header("Location: todos.php");
+    header("Location: index.html");
 }
 
 ?>
